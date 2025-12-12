@@ -352,8 +352,8 @@ export class BridgeClient {
 	 * @param hologram
 	 */
 	public async cast(hologram: HologramType): Promise<{ success: boolean }> {
-		if (this.isConnected == false) return { success: false }
 		this.log("%c ➡️ function call: cast ", "color: magenta; font-weight: bold; border: solid")
+		if (this.isConnected == false) return { success: false }
 
 		if (this.isCastPending == true) {
 			this.warn("already casting please wait")
@@ -399,6 +399,7 @@ export class BridgeClient {
 			//update the current playlistItem Index value.
 			this.currentPlaylistItemIndex = currentCastItem.index
 		} else {
+		  this.warn("currentCastItem undefined")
 			return { success: false }
 		}
 
